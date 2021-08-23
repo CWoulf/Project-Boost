@@ -427,13 +427,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 535557852877461028, guid: 2fa60c23aab4b8f4f8e9e92c73d808c2, type: 3}
+      propertyPath: rightBoosterParticles
+      value: 
+      objectReference: {fileID: 3185879223412958912}
+    - target: {fileID: 535557852877461028, guid: 2fa60c23aab4b8f4f8e9e92c73d808c2, type: 3}
+      propertyPath: leftBoosterParticles
+      value: 
+      objectReference: {fileID: 3185879223412958913}
     - target: {fileID: 3123293902602055832, guid: 2fa60c23aab4b8f4f8e9e92c73d808c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 3123293902602055832, guid: 2fa60c23aab4b8f4f8e9e92c73d808c2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 1.86
       objectReference: {fileID: 0}
     - target: {fileID: 3123293902602055832, guid: 2fa60c23aab4b8f4f8e9e92c73d808c2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -477,6 +485,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fa60c23aab4b8f4f8e9e92c73d808c2, type: 3}
+--- !u!198 &3185879223412958912 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 9088544886817936862, guid: 2fa60c23aab4b8f4f8e9e92c73d808c2, type: 3}
+  m_PrefabInstance: {fileID: 3185879223412958911}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &3185879223412958913 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1270746414462148968, guid: 2fa60c23aab4b8f4f8e9e92c73d808c2, type: 3}
+  m_PrefabInstance: {fileID: 3185879223412958911}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7947550596467535306
 PrefabInstance:
   m_ObjectHideFlags: 0
