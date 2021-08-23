@@ -87,6 +87,7 @@ MonoBehaviour:
   mainThrust: 1000
   rotationThrust: 100
   mainEngine: {fileID: 8300000, guid: bffda6c2ab1161e4aa5cda7423d518b8, type: 3}
+  thrusterSFX: {fileID: 8300000, guid: 752a3851223949c48800b0974e907bda, type: 3}
   mainBoosterParticles: {fileID: 1025696183794148249}
   leftBoosterParticles: {fileID: 1270746414462148968}
   rightBoosterParticles: {fileID: 9088544886817936862}

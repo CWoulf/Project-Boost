@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,16 +14,36 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] ParticleSystem crashParticles;
 
     AudioSource audioSource;
+
     bool isTransistioning = false;
+    bool collisionDisabled = false;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
     }
 
+    void Update()
+    {
+        RespondToDebugKeys();
+    }
+
+    private void RespondToDebugKeys()
+    {
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            LoadTheNextScene();
+        }        
+        else if(Input.GetKeyDown(KeyCode.C))
+        {
+            collisionDisabled = !collisionDisabled; // toggle collisions
+            Debug.Log("Collision Disabled is: " + collisionDisabled);
+        }
+    }
+
     private void OnCollisionEnter(Collision other)
     {
-        if (isTransistioning) { return; }
+        if (isTransistioning || collisionDisabled) { return; }
         switch(other.gameObject.tag)
         {
             case "Friendly":
@@ -75,4 +96,17 @@ public class CollisionHandler : MonoBehaviour
         }
         SceneManager.LoadScene(nextSceneIndex);
     }
+
+    void LoadTheNextScene()
+    {
+        GetComponent<Movement>().enabled = false;
+        // TODO: will need to change once make actual game
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        if (nextSceneIndex == SceneManager.sceneCountInBuildSettings)
+        {
+            nextSceneIndex = 0;
+        }
+        SceneManager.LoadScene(nextSceneIndex);
+    }
+
 }

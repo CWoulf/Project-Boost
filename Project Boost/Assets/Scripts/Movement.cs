@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
     [SerializeField] float mainThrust = 10f;
     [SerializeField] float rotationThrust = 10f;
     [SerializeField] AudioClip mainEngine;
+    [SerializeField] AudioClip thrusterSFX;
     [SerializeField] ParticleSystem mainBoosterParticles;
     [SerializeField] ParticleSystem leftBoosterParticles;
     [SerializeField] ParticleSystem rightBoosterParticles;
@@ -29,36 +30,49 @@ public class Movement : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.Space))
         {
-            rb.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
-            if(!audioSource.isPlaying)
-            {
-                audioSource.PlayOneShot(mainEngine);
-            }
-            if(!mainBoosterParticles.isPlaying)
-            {
-                mainBoosterParticles.Play();
-            }
+            StartThrusting();
         }
         else
         {
-            audioSource.Stop();
-            mainBoosterParticles.Stop();
+            StopThrusting();
         }
     }
+
+    private void StartThrusting()
+    {
+        rb.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(mainEngine);
+        }
+        if (!mainBoosterParticles.isPlaying)
+        {
+            mainBoosterParticles.Play();
+        }
+    }
+
+    private void StopThrusting()
+    {
+        audioSource.Stop();
+        mainBoosterParticles.Stop();
+    }
+
     void ProcessRotation()
     {
         if(Input.GetKey(KeyCode.A))
         {
             Rotation(rotationThrust);
-            if(!rightBoosterParticles.isPlaying)
+            if (!rightBoosterParticles.isPlaying)
             {
                 rightBoosterParticles.Play();
             }
+            //ThrusterSound();
         }
         else
         {
             rightBoosterParticles.Stop();
         }
+
         if (Input.GetKey(KeyCode.D))
         {
             Rotation(-rotationThrust);
@@ -70,6 +84,14 @@ public class Movement : MonoBehaviour
         else
         {
             leftBoosterParticles.Stop();
+        }
+    }
+
+    private void ThrusterSound()
+    {
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(thrusterSFX);
         }
     }
 
